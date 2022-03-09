@@ -95,14 +95,14 @@ def buildLineGroup():
         # Push the update to Call Manager
         #
         response = requests.request("POST", url, headers=headers, data=payload)
-        print('*******************************************************************************************')
-        print('Update is complete... The current line group members are shown below...')
-        print('*******************************************************************************************\n\n')
+        print('\n*******************************************************************************************')
+        print('Update is complete...\n')
 
 def retrieveLineGroup():
         #
         # Show the current line group configuration.
         #
+        print('The current line group members in Call Manager are shown below...')
         action = 'getLineGroup'
         headers = {
                 'SOAPAction': 'CUCM:DB ver=12.5 '+action,
@@ -121,6 +121,7 @@ def retrieveLineGroup():
         root = etree.fromstring(response.content)
         for dn in root.xpath('.//*[local-name()="pattern"]'):
                 print(dn.text)
+        print('*******************************************************************************************\n\n')
 
 
 #
@@ -142,6 +143,7 @@ while(continueHuntGroupUpdate):
         print('10. Epic - Tier 2 - Patient Access')
         print('11. Epic - Tier 2 - Radiant Radiology')
         print('12. Epic - Tier 2 - Willow Pharmacy')
+        print('13. Epic - Tier 2 - User Security Access')
         print('99. Update all hunt groups\n')
         lineGroupNameSel = input('Enter the number of the hunt group you\'re modifying:')
         lineGroupNameSel = int(lineGroupNameSel)
@@ -205,6 +207,11 @@ while(continueHuntGroupUpdate):
                 lineGroup = pd.read_csv('data/t2WillowPharmacy.csv')
                 buildLineGroup()
                 retrieveLineGroup()
+        elif lineGroupNameSel == 13:
+                lineGroupName = 'Epic - Tier 2 - User Security Access'
+                lineGroup = pd.read_csv('data/t2UserSecurityAccess.csv')
+                buildLineGroup()
+                retrieveLineGroup()
         elif lineGroupNameSel == 99:
                 #
                 # Are you sure you want to update all groups?
@@ -256,6 +263,10 @@ while(continueHuntGroupUpdate):
                         retrieveLineGroup()
                         lineGroupName = 'Epic - Tier 2 - Willow Pharmacy'
                         lineGroup = pd.read_csv('data/t2WillowPharmacy.csv')
+                        buildLineGroup()
+                        retrieveLineGroup()
+                        lineGroupName = 'Epic - Tier 2 - User Security Access'
+                        lineGroup = pd.read_csv('data/t2UserSecurityAccess.csv')
                         buildLineGroup()
                         retrieveLineGroup()
                         print('\n\nALL HUNT GROUPS WERE UPDATED!!!')
