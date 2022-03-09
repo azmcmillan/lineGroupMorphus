@@ -43,7 +43,7 @@ else:
 
 #
 # Set headers and soap envelope
-#
+# 
 
 action = 'updateLineGroup'
 headers = {
