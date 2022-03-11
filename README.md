@@ -1,10 +1,6 @@
 lineGroupMorphus
 
-Update CSV files with extensions to be updated in Call Manager.
+-Install requirements.txt
+-Update CSV files with extensions.
 
-Use python3 to run lineGroupMorphus.py and follow instructions...
-
-dependencies:
-pip install pandas
-pip install requests
-pip install lxml
+Run script: python3 lineGroupMorphus.py
