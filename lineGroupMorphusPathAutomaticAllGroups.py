@@ -1,6 +1,7 @@
 # Goal is to update line group members
 #
-import requests, sys
+import requests, sys, time
+import datetime as datetime
 from getpass import getpass
 from lxml import etree
 import pandas as pd
@@ -17,6 +18,12 @@ import pandas as pd
 path = str(sys.argv[1])
 login = True
 host = 'cucm-pub.kh.org'
+
+ts = time.time()
+sttime = datetime.datetime.fromtimestamp(ts).strftime('%Y%m%d_%H:%M')
+
+with open(path + 'log.txt', 'a') as f:
+        f.write('\nSCRIPT RAN AT: ' + str(sttime) + '\n')
 
 for i in range(3):
     user = 'ENTER USERNAME HERE'
@@ -127,6 +134,10 @@ def retrieveLineGroup():
 # Update line groups
 #
 
+lineGroupName = 'Epic - Tier 1 Support'
+lineGroup = pd.read_csv('data/t1Support.csv')
+buildLineGroup()
+retrieveLineGroup()
 lineGroupName = 'Epic - Tier 2 - ASAP'
 lineGroup = pd.read_csv(path + 't2Asap.csv')
 buildLineGroup()

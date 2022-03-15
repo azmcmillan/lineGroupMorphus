@@ -221,6 +221,10 @@ while(continueHuntGroupUpdate):
                 if areYouSure.startswith('y'): areYouSure = True
                 else: areYouSure = False
                 while(areYouSure):
+                        lineGroupName = 'Epic - Tier 1 Support'
+                        lineGroup = pd.read_csv('data/t1Support.csv')
+                        buildLineGroup()
+                        retrieveLineGroup()
                         lineGroupName = 'Epic - Tier 2 - ASAP'
                         lineGroup = pd.read_csv('data/t2Asap.csv')
                         buildLineGroup()
