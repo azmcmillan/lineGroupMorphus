@@ -275,6 +275,10 @@ while(continueHuntGroupUpdate):
                         lineGroup = pd.read_csv(path + 't2UserSecurityAccess.csv')
                         buildLineGroup()
                         retrieveLineGroup()
+                        lineGroupName = 'zTest'
+                        lineGroup = pd.read_csv(path + 'zTest.csv')
+                        buildLineGroup()
+                        retrieveLineGroup()
                         print('\n\nALL HUNT GROUPS WERE UPDATED!!!')
                         areYouSure = False
         #
