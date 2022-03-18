@@ -135,7 +135,7 @@ def retrieveLineGroup():
 #
 
 lineGroupName = 'Epic - Tier 1 Support'
-lineGroup = pd.read_csv('data/t1Support.csv')
+lineGroup = pd.read_csv(path + 't1Support.csv')
 buildLineGroup()
 retrieveLineGroup()
 lineGroupName = 'Epic - Tier 2 - ASAP'
